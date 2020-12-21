@@ -51,7 +51,6 @@ mysql>
 mysql> CREATE DATABASE example;
 Query OK, 1 row affected (0.02 sec)
 
-mysql> CREATE TABLE users (id BIGINT, name CHAR(20));
 mysql> USE example
 Database changed
 mysql> CREATE TABLE users (id BIGINT, name CHAR(20));
@@ -66,8 +65,6 @@ mysql> describe users;
 | name  | char(20) | YES  |     | NULL    |       |
 +-------+----------+------+-----+---------+-------+
 2 rows in set (0.02 sec)
-
-mysql>
 
 # 3.1 Создание дампа базы данных example
 
@@ -116,6 +113,14 @@ mysql> DESCRIBE users;
 | name  | char(20) | YES  |     | NULL    |       |
 +-------+----------+------+-----+---------+-------+
 2 rows in set (0.01 sec)
+
+# 4. Создать дамп единственной таблицы help_keyword базы данных mysql.
+# --extended-insert=FALSE каждая запись на одной строке
+# --where="true limit 100" true для согласования синтаксиса 'where true'
+vagrant@homestead:~$ mysqldump --extended-insert=FALSE --where="true limit 100" mysql help_keyword > mysql.sql
+# фильтр на каждую запись, считать только строки
+vagrant@homestead:~$ cat  mysql.sql | grep INSERT | wc --lines
+100
 
 
 
