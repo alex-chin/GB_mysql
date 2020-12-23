@@ -1,0 +1,35 @@
+{
+	"folders": {},
+	"connections": {
+		"mysql8-176892e4c9b-5e82afe972910316": {
+			"provider": "mysql",
+			"driver": "mysql8",
+			"name": "vk",
+			"save-password": true,
+			"show-system-objects": true,
+			"read-only": false,
+			"configuration": {
+				"host": "localhost",
+				"port": "33060",
+				"database": "vk",
+				"url": "jdbc:mysql://localhost:33060/vk",
+				"type": "dev",
+				"provider-properties": {
+					"@dbeaver-serverTimezone@": "Europe/Moscow"
+				},
+				"auth-model": "native",
+				"handlers": {}
+			}
+		}
+	},
+	"connection-types": {
+		"dev": {
+			"name": "Разработка",
+			"color": "255,255,255",
+			"description": "База данных для разработки",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false
+		}
+	}
+}

@@ -1,0 +1,45 @@
+{
+	"folders": {},
+	"connections": {
+		"mysql8-176892e4c9b-5e82afe972910316": {
+			"provider": "mysql",
+			"driver": "mysql8",
+			"name": "vk",
+			"save-password": true,
+			"show-system-objects": true,
+			"read-only": false,
+			"configuration": {
+				"host": "localhost",
+				"port": "33060",
+				"database": "vk",
+				"url": "jdbc:mysql://localhost:33060/vk",
+				"type": "dev",
+				"provider-properties": {
+					"@dbeaver-serverTimezone@": "Europe/Moscow"
+				},
+				"auth-model": "native"
+			}
+		}
+	},
+	"virtual-models": {
+		"mysql8-176892e4c9b-5e82afe972910316": {
+			"vk": {
+				"@properties": {
+					"erd.diagram.state": {
+						"serialized": "<diagram version=\"1\" name=\"vk\" time=\"202012231346\"><entities><data-source id=\"mysql8-176892e4c9b-5e82afe972910316\"><entity id=\"1\" name=\"calendar_user\" fq-name=\"vk.calendar_user\" order=\"0\" x=\"777\" y=\"836\"><path name=\"vk\"/></entity><entity id=\"2\" name=\"communities\" fq-name=\"vk.communities\" order=\"1\" x=\"358\" y=\"871\"><path name=\"vk\"/></entity><entity id=\"3\" name=\"events\" fq-name=\"vk.events\" order=\"2\" x=\"813\" y=\"522\"><path name=\"vk\"/></entity><entity id=\"4\" name=\"friend_requests\" fq-name=\"vk.friend_requests\" order=\"3\" x=\"358\" y=\"20\"><path name=\"vk\"/></entity><entity id=\"5\" name=\"likes\" fq-name=\"vk.likes\" order=\"4\" x=\"173\" y=\"109\"><path name=\"vk\"/></entity><entity id=\"6\" name=\"media\" fq-name=\"vk.media\" order=\"5\" x=\"358\" y=\"223\"><path name=\"vk\"/></entity><entity id=\"7\" name=\"media_types\" fq-name=\"vk.media_types\" order=\"6\" border-width=\"3\" x=\"659\" y=\"113\"><path name=\"vk\"/></entity><entity id=\"8\" name=\"messages\" fq-name=\"vk.messages\" order=\"7\" x=\"358\" y=\"460\"><path name=\"vk\"/></entity><entity id=\"9\" name=\"photo_albums\" fq-name=\"vk.photo_albums\" order=\"8\" x=\"358\" y=\"642\"><path name=\"vk\"/></entity><entity id=\"10\" name=\"photos\" fq-name=\"vk.photos\" order=\"9\" x=\"173\" y=\"623\"><path name=\"vk\"/></entity><entity id=\"11\" name=\"profiles\" fq-name=\"vk.profiles\" order=\"10\" x=\"173\" y=\"251\"><path name=\"vk\"/></entity><entity id=\"12\" name=\"tags\" fq-name=\"vk.tags\" order=\"11\" x=\"894\" y=\"317\"><path name=\"vk\"/></entity><entity id=\"13\" name=\"tags_media\" fq-name=\"vk.tags_media\" order=\"12\" x=\"716\" y=\"352\"><path name=\"vk\"/></entity><entity id=\"14\" name=\"users\" fq-name=\"vk.users\" order=\"13\" x=\"575\" y=\"425\"><path name=\"vk\"/></entity><entity id=\"15\" name=\"users_communities\" fq-name=\"vk.users_communities\" order=\"14\" x=\"173\" y=\"947\"><path name=\"vk\"/></entity></data-source></entities><relations><relation name=\"users_communities_ibfk_2\" fq-name=\"vk.users_communities.users_communities_ibfk_2\" type=\"fk\" pk-ref=\"2\" fk-ref=\"15\"/><relation name=\"calendar_user_ibfk_2\" fq-name=\"vk.calendar_user.calendar_user_ibfk_2\" type=\"fk\" pk-ref=\"3\" fk-ref=\"1\"/><relation name=\"events_ibfk_2\" fq-name=\"vk.events.events_ibfk_2\" type=\"fk\" pk-ref=\"6\" fk-ref=\"3\"/><relation name=\"likes_fk\" fq-name=\"vk.likes.likes_fk\" type=\"fk\" pk-ref=\"6\" fk-ref=\"5\"/><relation name=\"photos_ibfk_2\" fq-name=\"vk.photos.photos_ibfk_2\" type=\"fk\" pk-ref=\"6\" fk-ref=\"10\"/><relation name=\"profiles_fk_1\" fq-name=\"vk.profiles.profiles_fk_1\" type=\"fk\" pk-ref=\"6\" fk-ref=\"11\"/><relation name=\"tags_media_ibfk_2\" fq-name=\"vk.tags_media.tags_media_ibfk_2\" type=\"fk\" pk-ref=\"6\" fk-ref=\"13\"/><relation name=\"media_ibfk_2\" fq-name=\"vk.media.media_ibfk_2\" type=\"fk\" pk-ref=\"7\" fk-ref=\"6\"/><relation name=\"photos_ibfk_1\" fq-name=\"vk.photos.photos_ibfk_1\" type=\"fk\" pk-ref=\"9\" fk-ref=\"10\"/><relation name=\"tags_media_ibfk_1\" fq-name=\"vk.tags_media.tags_media_ibfk_1\" type=\"fk\" pk-ref=\"12\" fk-ref=\"13\"/><relation name=\"calendar_user_ibfk_1\" fq-name=\"vk.calendar_user.calendar_user_ibfk_1\" type=\"fk\" pk-ref=\"14\" fk-ref=\"1\"><bend type=\"abs\" x=\"736\" y=\"859\"/></relation><relation name=\"communities_ibfk_1\" fq-name=\"vk.communities.communities_ibfk_1\" type=\"fk\" pk-ref=\"14\" fk-ref=\"2\"/><relation name=\"events_ibfk_1\" fq-name=\"vk.events.events_ibfk_1\" type=\"fk\" pk-ref=\"14\" fk-ref=\"3\"/><relation name=\"friend_requests_ibfk_1\" fq-name=\"vk.friend_requests.friend_requests_ibfk_1\" type=\"fk\" pk-ref=\"14\" fk-ref=\"4\"/><relation name=\"friend_requests_ibfk_2\" fq-name=\"vk.friend_requests.friend_requests_ibfk_2\" type=\"fk\" pk-ref=\"14\" fk-ref=\"4\"/><relation name=\"likes_fk_1\" fq-name=\"vk.likes.likes_fk_1\" type=\"fk\" pk-ref=\"14\" fk-ref=\"5\"/><relation name=\"media_ibfk_1\" fq-name=\"vk.media.media_ibfk_1\" type=\"fk\" pk-ref=\"14\" fk-ref=\"6\"/><relation name=\"messages_ibfk_1\" fq-name=\"vk.messages.messages_ibfk_1\" type=\"fk\" pk-ref=\"14\" fk-ref=\"8\"/><relation name=\"messages_ibfk_2\" fq-name=\"vk.messages.messages_ibfk_2\" type=\"fk\" pk-ref=\"14\" fk-ref=\"8\"/><relation name=\"photo_albums_ibfk_1\" fq-name=\"vk.photo_albums.photo_albums_ibfk_1\" type=\"fk\" pk-ref=\"14\" fk-ref=\"9\"/><relation name=\"fk_user_id\" fq-name=\"vk.profiles.fk_user_id\" type=\"fk\" pk-ref=\"14\" fk-ref=\"11\"/><relation name=\"users_communities_ibfk_1\" fq-name=\"vk.users_communities.users_communities_ibfk_1\" type=\"fk\" pk-ref=\"14\" fk-ref=\"15\"/></relations></diagram>"
+					}
+				}
+			}
+		}
+	},
+	"connection-types": {
+		"dev": {
+			"name": "Разработка",
+			"color": "255,255,255",
+			"description": "База данных для разработки",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false
+		}
+	}
+}

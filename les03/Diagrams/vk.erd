@@ -2,59 +2,79 @@
 <diagram version="1" name="vk.erd">
 	<entities>
 		<data-source id="mysql8-176892e4c9b-5e82afe972910316">
-			<entity id="1" name="communities" fq-name="vk.communities" order="0" x="178" y="325">
+			<entity id="1" name="calendar_user" fq-name="vk.calendar_user" order="0" x="293" y="607">
 				<path name="vk"/>
 			</entity>
-			<entity id="2" name="friend_requests" fq-name="vk.friend_requests" order="1" x="223" y="38">
+			<entity id="2" name="communities" fq-name="vk.communities" order="1" x="46" y="436">
 				<path name="vk"/>
 			</entity>
-			<entity id="3" name="likes" fq-name="vk.likes" order="2" x="507" y="176">
+			<entity id="3" name="events" fq-name="vk.events" order="2" x="654" y="601">
 				<path name="vk"/>
 			</entity>
-			<entity id="4" name="media" fq-name="vk.media" order="3" x="602" y="114">
+			<entity id="4" name="friend_requests" fq-name="vk.friend_requests" order="3" x="29" y="25">
 				<path name="vk"/>
 			</entity>
-			<entity id="5" name="media_types" fq-name="vk.media_types" order="4" x="708" y="106">
+			<entity id="5" name="likes" fq-name="vk.likes" order="4" x="505" y="52">
 				<path name="vk"/>
 			</entity>
-			<entity id="6" name="messages" fq-name="vk.messages" order="5" x="377" y="35">
+			<entity id="6" name="media" fq-name="vk.media" order="5" x="636" y="156">
 				<path name="vk"/>
 			</entity>
-			<entity id="7" name="photo_albums" fq-name="vk.photo_albums" order="6" x="550" y="334">
+			<entity id="7" name="media_types" fq-name="vk.media_types" order="6" x="781" y="72">
 				<path name="vk"/>
 			</entity>
-			<entity id="8" name="photos" fq-name="vk.photos" order="7" x="681" y="232">
+			<entity id="8" name="messages" fq-name="vk.messages" order="7" x="43" y="163">
 				<path name="vk"/>
 			</entity>
-			<entity id="9" name="profiles" fq-name="vk.profiles" order="8" x="491" y="48">
+			<entity id="9" name="photo_albums" fq-name="vk.photo_albums" order="8" x="528" y="517">
 				<path name="vk"/>
 			</entity>
-			<entity id="10" name="users" fq-name="vk.users" order="9" x="317" y="143">
+			<entity id="10" name="photos" fq-name="vk.photos" order="9" x="536" y="344">
 				<path name="vk"/>
 			</entity>
-			<entity id="11" name="users_communities" fq-name="vk.users_communities" order="10" border-width="3" x="180" y="218">
+			<entity id="11" name="profiles" fq-name="vk.profiles" order="10" x="653" y="1">
+				<path name="vk"/>
+			</entity>
+			<entity id="12" name="tags" fq-name="vk.tags" order="11" x="911" y="73">
+				<path name="vk"/>
+			</entity>
+			<entity id="13" name="tags_media" fq-name="vk.tags_media" order="12" border-width="3" x="826" y="212">
+				<path name="vk"/>
+			</entity>
+			<entity id="14" name="users" fq-name="vk.users" order="13" x="288" y="175">
+				<path name="vk"/>
+			</entity>
+			<entity id="15" name="users_communities" fq-name="vk.users_communities" order="14" x="31" y="314">
 				<path name="vk"/>
 			</entity>
 		</data-source>
 	</entities>
 	<relations>
-		<relation name="users_communities_ibfk_2" fq-name="vk.users_communities.users_communities_ibfk_2" type="fk" pk-ref="1" fk-ref="11"/>
-		<relation name="likes_fk" fq-name="vk.likes.likes_fk" type="fk" pk-ref="4" fk-ref="3"/>
-		<relation name="photos_ibfk_2" fq-name="vk.photos.photos_ibfk_2" type="fk" pk-ref="4" fk-ref="8"/>
-		<relation name="profiles_fk_1" fq-name="vk.profiles.profiles_fk_1" type="fk" pk-ref="4" fk-ref="9"/>
-		<relation name="media_ibfk_2" fq-name="vk.media.media_ibfk_2" type="fk" pk-ref="5" fk-ref="4"/>
-		<relation name="photos_ibfk_1" fq-name="vk.photos.photos_ibfk_1" type="fk" pk-ref="7" fk-ref="8"/>
-		<relation name="communities_ibfk_1" fq-name="vk.communities.communities_ibfk_1" type="fk" pk-ref="10" fk-ref="1">
-			<bend type="abs" x="363" y="269"/>
+		<relation name="users_communities_ibfk_2" fq-name="vk.users_communities.users_communities_ibfk_2" type="fk" pk-ref="2" fk-ref="15"/>
+		<relation name="calendar_user_ibfk_2" fq-name="vk.calendar_user.calendar_user_ibfk_2" type="fk" pk-ref="3" fk-ref="1"/>
+		<relation name="events_ibfk_2" fq-name="vk.events.events_ibfk_2" type="fk" pk-ref="6" fk-ref="3"/>
+		<relation name="likes_fk" fq-name="vk.likes.likes_fk" type="fk" pk-ref="6" fk-ref="5"/>
+		<relation name="photos_ibfk_2" fq-name="vk.photos.photos_ibfk_2" type="fk" pk-ref="6" fk-ref="10"/>
+		<relation name="profiles_fk_1" fq-name="vk.profiles.profiles_fk_1" type="fk" pk-ref="6" fk-ref="11"/>
+		<relation name="tags_media_ibfk_2" fq-name="vk.tags_media.tags_media_ibfk_2" type="fk" pk-ref="6" fk-ref="13"/>
+		<relation name="media_ibfk_2" fq-name="vk.media.media_ibfk_2" type="fk" pk-ref="7" fk-ref="6"/>
+		<relation name="photos_ibfk_1" fq-name="vk.photos.photos_ibfk_1" type="fk" pk-ref="9" fk-ref="10"/>
+		<relation name="tags_media_ibfk_1" fq-name="vk.tags_media.tags_media_ibfk_1" type="fk" pk-ref="12" fk-ref="13"/>
+		<relation name="calendar_user_ibfk_1" fq-name="vk.calendar_user.calendar_user_ibfk_1" type="fk" pk-ref="14" fk-ref="1"/>
+		<relation name="communities_ibfk_1" fq-name="vk.communities.communities_ibfk_1" type="fk" pk-ref="14" fk-ref="2"/>
+		<relation name="events_ibfk_1" fq-name="vk.events.events_ibfk_1" type="fk" pk-ref="14" fk-ref="3">
+			<bend type="abs" x="432" y="608"/>
 		</relation>
-		<relation name="friend_requests_ibfk_1" fq-name="vk.friend_requests.friend_requests_ibfk_1" type="fk" pk-ref="10" fk-ref="2"/>
-		<relation name="friend_requests_ibfk_2" fq-name="vk.friend_requests.friend_requests_ibfk_2" type="fk" pk-ref="10" fk-ref="2"/>
-		<relation name="likes_fk_1" fq-name="vk.likes.likes_fk_1" type="fk" pk-ref="10" fk-ref="3"/>
-		<relation name="media_ibfk_1" fq-name="vk.media.media_ibfk_1" type="fk" pk-ref="10" fk-ref="4"/>
-		<relation name="messages_ibfk_1" fq-name="vk.messages.messages_ibfk_1" type="fk" pk-ref="10" fk-ref="6"/>
-		<relation name="messages_ibfk_2" fq-name="vk.messages.messages_ibfk_2" type="fk" pk-ref="10" fk-ref="6"/>
-		<relation name="photo_albums_ibfk_1" fq-name="vk.photo_albums.photo_albums_ibfk_1" type="fk" pk-ref="10" fk-ref="7"/>
-		<relation name="fk_user_id" fq-name="vk.profiles.fk_user_id" type="fk" pk-ref="10" fk-ref="9"/>
-		<relation name="users_communities_ibfk_1" fq-name="vk.users_communities.users_communities_ibfk_1" type="fk" pk-ref="10" fk-ref="11"/>
+		<relation name="friend_requests_ibfk_1" fq-name="vk.friend_requests.friend_requests_ibfk_1" type="fk" pk-ref="14" fk-ref="4"/>
+		<relation name="friend_requests_ibfk_2" fq-name="vk.friend_requests.friend_requests_ibfk_2" type="fk" pk-ref="14" fk-ref="4"/>
+		<relation name="likes_fk_1" fq-name="vk.likes.likes_fk_1" type="fk" pk-ref="14" fk-ref="5"/>
+		<relation name="media_ibfk_1" fq-name="vk.media.media_ibfk_1" type="fk" pk-ref="14" fk-ref="6"/>
+		<relation name="messages_ibfk_1" fq-name="vk.messages.messages_ibfk_1" type="fk" pk-ref="14" fk-ref="8"/>
+		<relation name="messages_ibfk_2" fq-name="vk.messages.messages_ibfk_2" type="fk" pk-ref="14" fk-ref="8"/>
+		<relation name="photo_albums_ibfk_1" fq-name="vk.photo_albums.photo_albums_ibfk_1" type="fk" pk-ref="14" fk-ref="9"/>
+		<relation name="fk_user_id" fq-name="vk.profiles.fk_user_id" type="fk" pk-ref="14" fk-ref="11">
+			<bend type="abs" x="443" y="38"/>
+		</relation>
+		<relation name="users_communities_ibfk_1" fq-name="vk.users_communities.users_communities_ibfk_1" type="fk" pk-ref="14" fk-ref="15"/>
 	</relations>
 </diagram>
