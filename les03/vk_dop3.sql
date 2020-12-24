@@ -12,7 +12,8 @@
 
 DROP TABLE IF EXISTS tags;
 CREATE TABLE tags (
-	code CHAR(6) NOT NULL PRIMARY KEY COMMENT 'код тега, натуральный ключ'
+	code CHAR(6) NOT NULL PRIMARY KEY COMMENT 'код тега, натуральный ключ',
+    INDEX code (code)
 ) COMMENT 'Теги для быстрого поиска';
 
 DROP TABLE IF EXISTS tags_media;
@@ -21,7 +22,7 @@ CREATE TABLE tags_media (
 	media_id BIGINT(10) UNSIGNED NOT NULL,  
   	PRIMARY KEY (code, media_id), -- два одинаковых тега для одной публикации недопустимы
   	KEY media_id (media_id),
-  	-- KEY code (code),
+  	INDEX code (code),
     FOREIGN KEY (code) REFERENCES tags (code), -- справочник по тегам
     FOREIGN KEY (media_id) REFERENCES media (id) -- теги для публикации
 ) COMMENT 'Теги на медиа для быстрого поиска';
@@ -34,7 +35,6 @@ CREATE TABLE events (
 	event_datetime DATETIME NOT NULL,
 	event_date DATE COMMENT 'Для операций с календарем', -- возможно будет вычисляться из event_date, решить на этапе реализации
 	coord POINT COMMENT 'Коодинаты события',
-  	KEY (event_date),
     FOREIGN KEY (user_id) REFERENCES users (id), -- создатель события
     FOREIGN KEY (media_id) REFERENCES media (id) -- описание события
 ) COMMENT 'События привязанные к локации и времени'; 
