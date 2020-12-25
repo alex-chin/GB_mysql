@@ -26,7 +26,7 @@ VALUES ('лес'),
 INSERT INTO `users`
 VALUES ('2', 'Jaclyn', 'Okuneva', 'donnell02@example.org', 'd20501f2f7938819d8a598bcc453334b226fe503', '89111967547'),
        ('3', 'Flavie', 'Hyatt', 'bernadette31@example.org', '2c9e9bfde2972a252eece0b5f3e2a0cadd94e8bf', '89151397375'),
-       ('4', 'Casimir', 'Murazik', 'bonita69@example.org', '8641f3b422f6f565904ffb816da073e468681b53', '89074197622'),
+       ('4', 'Casimir', 'Murazik', 'bonita69@example.org', '8>пкщ641f3b422f6f565904ffb816da073e468681b53', '89074197622'),
        ('5', 'Irving', 'Treutel', 'albina07@example.com', '40e4fb6f407e5ea5a9b3dfb8ff99bb4398d153ec', '89070905362'),
        ('6', 'Brycen', 'Osinski', 'jedidiah.schneider@example.org', '9e8ee65fb92388c9f970e27510258fdb9285dbb8',
         '89158111180'),
