@@ -6,6 +6,8 @@
 # v. Написать название темы курсового проекта (в комментарии)
 
 
+# i. Заполнить все таблицы БД vk данными
+
 INSERT INTO `users`
 VALUES ('2', 'Jaclyn', 'Okuneva', 'donnell02@example.org', 'd20501f2f7938819d8a598bcc453334b226fe503', '89111967547'),
        ('3', 'Flavie', 'Hyatt', 'bernadette31@example.org', '2c9e9bfde2972a252eece0b5f3e2a0cadd94e8bf', '89151397375'),
@@ -148,7 +150,7 @@ VALUES ('2', 'Jaclyn', 'Okuneva', 'donnell02@example.org', 'd20501f2f7938819d8a5
         '89176157478'),
        ('101', 'Cheyenne', 'Kub', 'jaron89@example.net', '27e35a10015a0d46e790535ef434d3ebe6e03558', '89254621197');
 
-INSERT INTO `profiles`
+INSERT INTO `profiles` (user_id, gender, birthday, photo_id, created_at, hometown)
 VALUES ('2', 'm', '2020-10-17', NULL, '2010-01-25 19:21:20', 'North Jerrell'),
        ('3', 'f', '2018-04-04', NULL, '1998-01-15 01:05:45', 'Jaylenhaven'),
        ('4', 'f', '1977-07-20', NULL, '2009-11-02 13:26:26', 'Aleenfurt'),
@@ -476,6 +478,10 @@ VALUES ('1', '2', '2',
         'Vitae est omnis distinctio quam. Facere eaque quae impedit in accusantium velit. Qui numquam quia dolorem voluptas alias. Ut et commodi neque sit commodi.',
         'et', '41458723', NULL, '1974-08-09 22:01:03', '2018-01-11 09:32:45');
 
+# иммитация имен файлов
+UPDATE media
+set filename = CONCAT(filename, '.png');
+
 INSERT INTO `photo_albums`
 VALUES ('1', 'Minus dolorum veniam magni.', '2'),
        ('2', 'Id vel repudiandae deleniti odit expedita sit esse et.', '3'),
@@ -593,8 +599,8 @@ VALUES ('1', '1', '1'),
        ('61', '11', '61'),
        ('62', '12', '62');
 
-insert into events (id, user_id, media_id, event_datetime, event_date, coord)
-values (1, 1, 1, '2020-12-27 00:18:23', '2020-12-27', null),
+INSERT INTO events (id, user_id, media_id, event_datetime, event_date, coord)
+VALUES (1, 1, 1, '2020-12-27 00:18:23', '2020-12-27', null),
        (2, 1, 2, '2020-12-27 00:18:59', '2020-12-27', null),
        (3, 3, 2, '2020-12-27 00:18:59', '2020-12-27', null),
        (4, 4, 2, '2020-12-27 00:18:59', '2020-12-27', null),
@@ -619,3 +625,73 @@ VALUES (1, 1),
        (1, 9),
        (1, 10),
        (2, 1);
+
+INSERT INTO friend_requests (initiator_user_id, target_user_id, status)
+VALUES (1, 2, 'requested'),
+       (1, 3, 'unfriended'),
+       (1, 4, 'requested'),
+       (1, 5, 'requested'),
+       (1, 6, 'requested'),
+       (1, 7, 'requested'),
+       (1, 8, 'approved'),
+       (1, 9, 'requested'),
+       (1, 10, 'requested'),
+       (1, 11, 'declined');
+
+INSERT INTO likes (user_id, media_id)
+VALUES (1, 1),
+       (1, 2),
+       (1, 3),
+       (1, 4),
+       (1, 5),
+       (1, 6),
+       (1, 7),
+       (1, 8),
+       (1, 9),
+       (2, 10),
+       (2, 10),
+       (3, 10),
+       (3, 10);
+
+
+INSERT INTO messages (from_user_id, to_user_id, body)
+VALUES (1, 2, 'Hi!'),
+       (2, 1, 'Hi!'),
+       (1, 2, 'What are you doing?'),
+       (2, 1, 'I will play in Fortnite'),
+       (1, 2, 'What is time?'),
+       (2, 1, 'in 19-00'),
+       (1, 2, 'What is coordinates?'),
+       (2, 1, 'Near mountains...'),
+       (1, 2, 'In group?'),
+       (2, 1, 'Yes!!!');
+
+
+# ii. Написать скрипт, возвращающий список имен (только firstname) пользователей без повторений в алфавитном порядке
+SELECT DISTINCT firstname
+FROM users
+ORDER BY firstname;
+
+# iii. Написать скрипт, отмечающий несовершеннолетних пользователей как неактивных
+# (поле is_active = false). Предварительно добавить такое поле в таблицу profiles со
+# значением по умолчанию = true (или 1)
+
+alter table profiles
+    add is_active bool default true not null;
+
+UPDATE profiles
+SET is_active = false
+WHERE year(now()) - year(birthday) < 18;
+
+# iv. Написать скрипт, удаляющий сообщения «из будущего» (дата больше сегодняшней)
+DELETE FROM messages WHERE created_at > now();
+
+# v. Написать название темы курсового проекта (в комментарии)
+# Генерация документации для защиты информационных систем (ИС)
+# Целью курсового проекта является разработка информационной модели ИС которая вслючает следующие сущности:
+#  - ИС Организации (организация, название ИС, категория обрабатываемой информации,
+#  - Организация, владелец ИС (наименование)
+#  - Сотрудники Организации ИС (ФИО, роль)
+#  - Организация выполняющая проект по защите информации (наименование)
+#  - Сотрудники Организации выполняющую проект по защите информации (ФИО, роль)
+#  - Требования по защите информации (мера, тип ИС, класс ИС)
