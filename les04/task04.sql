@@ -612,6 +612,7 @@ VALUES (1, 1, 1, '2020-12-27 00:18:23', '2020-12-27', null),
        (10, 9, 2, '2020-12-27 00:18:59', '2020-12-27', null);
 
 
+SHOW VARIABLES LIKE'character%';
 
 INSERT INTO calendar_user (user_id, event_id)
 VALUES (1, 1),
