@@ -71,10 +71,19 @@ VALUES (1, 1, 0),
        (1, 6, 1);
 
 
+SELECT product_id, value, IF(value = 0, 1, 0) is_zero
+FROM storehouses_products
+ORDER BY is_zero, value;
+
+# 4. (по желанию) Из таблицы users необходимо извлечь пользователей,
+#  родившихся в августе и мае. Месяцы заданы в виде списка английских названий
+#  ('may', 'august')
+
+select user_id, birthday
+from profiles
+WHERE LOWER(DATE_FORMAT(birthday, '%M')) in ('may', 'august');
 
 
-
-
-
-
-
+# 5. (по желанию) Из таблицы catalogs извлекаются записи при помощи запроса.
+# SELECT * FROM catalogs WHERE id IN (5, 1, 2);
+# Отсортируйте записи в порядке, заданном в списке IN.
