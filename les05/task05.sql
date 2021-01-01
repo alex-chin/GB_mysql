@@ -87,3 +87,8 @@ WHERE LOWER(DATE_FORMAT(birthday, '%M')) in ('may', 'august');
 # 5. (по желанию) Из таблицы catalogs извлекаются записи при помощи запроса.
 # SELECT * FROM catalogs WHERE id IN (5, 1, 2);
 # Отсортируйте записи в порядке, заданном в списке IN.
+
+SELECT *
+FROM catalogs
+WHERE id IN (5, 1, 2)
+ORDER BY FIND_IN_SET(id, '5,1,2');
