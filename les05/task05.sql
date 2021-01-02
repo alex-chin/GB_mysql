@@ -34,6 +34,7 @@ SET created_at = NOW(),
 # и в них долгое время помещались значения в формате "20.10.2017 8:10".
 # Необходимо преобразовать поля к типу DATETIME, сохранив введеные ранее значения.
 
+# Подготовка таблицы под вариант, описанный в задаче.
 # Вспомогательные поля
 ALTER TABLE users
     ADD created_at_temp VARCHAR(20);
@@ -45,12 +46,7 @@ UPDATE vk.users
 SET vk.users.created_at_temp = DATE_FORMAT(created_at, '%d.%m.%Y %h:%i'),
     vk.users.updated_at_temp = DATE_FORMAT(created_at, '%d.%m.%Y %h:%i');
 
-# обнуление полей
-UPDATE vk.users
-SET updated_at =NULL,
-    created_at=NULL;
-
-# восстановление полей
+# фактическое преобразование полей
 UPDATE vk.users
 SET updated_at = STR_TO_DATE(vk.users.updated_at_temp, "%d.%m.%Y %h:%i"),
     created_at = STR_TO_DATE(vk.users.created_at_temp, "%d.%m.%Y %h:%i")
@@ -70,7 +66,7 @@ VALUES (1, 1, 0),
        (1, 5, 500),
        (1, 6, 1);
 
-
+# создание отдельного поля для коррекции сортировки
 SELECT product_id, value, IF(value = 0, 1, 0) is_zero
 FROM storehouses_products
 ORDER BY is_zero, value;
