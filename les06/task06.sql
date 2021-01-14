@@ -26,8 +26,6 @@ FROM (
 
 
 # 2. Подсчитать общее количество лайков, которые получили пользователи младше 10 лет..
-
-
 SELECT COUNT(*) num_likes_teen
 FROM likes
 WHERE user_id in (
