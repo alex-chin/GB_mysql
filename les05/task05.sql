@@ -1,4 +1,7 @@
-# У рок 5. Практическое задание по теме “Операторы, фильтрация, сортировка и ограничение”
+# Урок 5.
+#
+# Практическое задание по теме “Операторы, фильтрация, сортировка и ограничение”
+#
 # 1. Пусть в таблице users поля created_at и updated_at оказались незаполненными.
 # Заполните их текущими датой и временем.
 # 2. Таблица users была неудачно спроектирована.
@@ -16,6 +19,12 @@
 # 5. (по желанию) Из таблицы catalogs извлекаются записи при помощи запроса.
 # SELECT * FROM catalogs WHERE id IN (5, 1, 2); О
 # тсортируйте записи в порядке, заданном в списке IN.
+#
+# Практическое задание теме “Агрегация данных”
+# 1. Подсчитайте средний возраст пользователей в таблице users
+# 2. Подсчитайте количество дней рождения, которые приходятся на каждый из дней недели.
+#    Следует учесть, что необходимы дни недели текущего года, а не года рождения.
+# 3. (по желанию) Подсчитайте произведение чисел в столбце таблицы
 
 
 # 1. Пусть в таблице users поля created_at и updated_at оказались незаполненными.
@@ -88,3 +97,42 @@ SELECT *
 FROM catalogs
 WHERE id IN (5, 1, 2)
 ORDER BY FIND_IN_SET(id, '5,1,2');
+
+# 1. Подсчитайте средний возраст пользователей в таблице users
+
+SELECT AVG((SELECT TIMESTAMPDIFF(YEAR, birthday, NOW()) FROM profiles WHERE user_id = users.id)) med_old
+FROM users;
+
+# 2. Подсчитайте количество дней рождения, которые приходятся на каждый из дней недели.
+#    Следует учесть, что необходимы дни недели текущего года, а не года рождения.
+
+SELECT dw, COUNT(dw)
+FROM (
+         SELECT birthday,
+                DAYOFWEEK(STR_TO_DATE(CONCAT(month(birthday), '/', DAY(birthday), '/', YEAR(NOW())), '%m/%d/%Y')) dw
+         FROM profiles) as bd
+GROUP BY dw;
+
+# 3. (по желанию) Подсчитайте произведение чисел в столбце таблицы
+
+create table Num_series
+(
+    num int null
+);
+
+INSERT INTO Num_series (num) VALUES (1);
+INSERT INTO Num_series (num) VALUES (2);
+INSERT INTO Num_series (num) VALUES (3);
+INSERT INTO Num_series (num) VALUES (4);
+INSERT INTO Num_series (num) VALUES (5);
+
+SELECT ROUND(EXP(SUM(LOG(num))),1)
+FROM Num_series;
+
+select max(sum)
+from
+(
+  select @sum := @sum * num as sum
+  from Num_series
+  cross join (select @sum := 1) s
+) tmp
