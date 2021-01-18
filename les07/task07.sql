@@ -20,10 +20,12 @@ VALUES (2, '2021-01-18 09:26:30', '2021-01-18 09:26:30');
 INSERT INTO shop.orders (user_id, created_at, updated_at)
 VALUES (2, '2021-01-18 09:26:30', '2021-01-18 09:26:30');
 
+# 1 вариант
 SELECT DISTINCT u.name
 FROM orders
          JOIN users u on u.id = orders.user_id;
 
+# 2 вариант
 SELECT DISTINCT name
 from users
          join orders o on users.id = o.user_id;
@@ -38,6 +40,8 @@ FROM products p
 # 3. (по желанию) Пусть имеется таблица рейсов flights (id, from, to) и
 # таблица городов cities (label, name). Поля from, to и label содержат английские названия городов,
 # поле name — русское. Выведите список рейсов flights с русскими названиями городов.
+
+# генерация бд в отдельном файле shed.sql
 
 SELECT  f.id, c1.name, c2.name
 from flights f
