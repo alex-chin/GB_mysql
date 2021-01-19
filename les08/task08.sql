@@ -98,3 +98,5 @@ CREATE OR REPLACE VIEW calend AS
 
 SELECT * FROM calend;
 
+SELECT  * from  (1 ,2, 3);
+
