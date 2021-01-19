@@ -83,7 +83,8 @@ SELECT p.name product_name, c.name catalog_name
 FROM products p
          JOIN catalogs c on c.id = p.catalog_id;
 
-SELECT * from product_short;
+SELECT *
+from product_short;
 
 #   1.3 (по желанию) Пусть имеется таблица с календарным полем created_at.
 #  В ней размещены разряженые календарные записи за август 2018 года
@@ -94,9 +95,35 @@ SELECT * from product_short;
 
 # иммитация таблицы
 CREATE OR REPLACE VIEW calend AS
-    SELECT * FROM products WHERE YEAR(created_at) = 2018;
+SELECT *
+FROM products
+WHERE YEAR(created_at) = 2018;
 
-SELECT * FROM calend;
+SELECT *
+FROM calend;
 
-SELECT  * from  (1 ,2, 3);
+
+SELECT d2 * 10 + d1 as day
+from (select 0 d1
+      union
+      select 1
+      union
+      select 2
+      union
+      select 3
+      union
+      select 4
+      union
+      select 5
+      union
+      select 6
+      union
+      select 7
+      union
+      select 8
+      union
+      select 9) cal,
+     (select 0 d2 union select 1 union select 2 union select 3) cal2
+WHERE (d2 * 10 + d1) <= 31 and (d2 * 10 + d1) > 0
+order by day;
 
