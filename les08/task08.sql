@@ -228,15 +228,11 @@ DELIMITER //
 
 create function FIBONACCI(N BIGINT) returns BIGINT
 begin
-    DECLARE FIB BIGINT;
-    IF N < 0 THEN
-        RETURN 0;
-    ELSEIF N = 1 THEN
-        RETURN 1;
-    ELSE
-        SET FIB = FIBONACCI(N - 1) + FIBONACCI(N - 2);
-        RETURN FIB;
-    END IF;
+    # хранимые функции в mysql не поддерживают рекурсию, реализуем через ХП
+    SET @@GLOBAL.max_sp_recursion_depth = 255;
+    SET @@session.max_sp_recursion_depth = 255;
+    CALL sp_fibonacci(N, @L);
+    RETURN @L;
 end //
 
 DELIMITER ;
@@ -245,6 +241,7 @@ DROP PROCEDURE IF EXISTS `sp_fibonacci`;
 
 DELIMITER //
 
+# Реализация поиска чисел Фибоначчи через рекурсию
 CREATE PROCEDURE `sp_fibonacci`(in N bigint, out R BIGINT)
 BEGIN
     DECLARE F1 BIGINT;
@@ -263,12 +260,7 @@ end //
 
 DELIMITER ;
 
-SET @@GLOBAL.max_sp_recursion_depth = 255;
-SET @@session.max_sp_recursion_depth = 255;
-CALL sp_fibonacci(10,@L);
-SELECT @L;
-
-SELECT FIBONACCI(0)
+SELECT FIBONACCI(7);
 
 
 
