@@ -42,7 +42,7 @@ CREATE TABLE products (
 ) COMMENT = 'Товарные позиции';
 
 INSERT INTO products
-  (name, description, price, catalog_id)
+  (name, desription, price, catalog_id)
 VALUES
   ('Intel Core i3-8100', 'Процессор для настольных персональных компьютеров, основанных на платформе Intel.', 7890.00, 1),
   ('Intel Core i5-7400', 'Процессор для настольных персональных компьютеров, основанных на платформе Intel.', 12700.00, 1),
