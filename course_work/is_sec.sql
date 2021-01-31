@@ -26,7 +26,7 @@ alter table photos
 create table organizations
 (
     id          SERIAL PRIMARY KEY,
-    photo_id    bigint unsigned comment 'лого',
+    photo_id    bigint unsigned null comment 'лого',
     name        varchar(255) null,
     short_name  varchar(255) null,
     address     varchar(255) null,
