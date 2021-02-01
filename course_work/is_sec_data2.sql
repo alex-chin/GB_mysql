@@ -1,3 +1,5 @@
+use issec;
+
 insert into issec.measures (id, part, order_service, code, description, div4, div3, div2, div1)
 values (1, 1, 'Приказ  31', 'ИАФ.0', 'Разработка политики идентификации и аутентификации', false, true, true, true),
        (2, 1, 'Приказ 239', 'ИАФ.0', 'Регламентация правил и процедур идентификации и аутентификации', false, true,
