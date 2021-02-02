@@ -20,12 +20,17 @@
 # - Выполнение мер по защите в ИС
 #
 # В соответсвии с введенными данными возможно получение разнообразных справок и отчетов по проектам.
-# А также автоматическая генерация необходимой документации по шаблонам
+# А также автоматическая генерация необходимой документации по шаблонам документов.
 #
 #  Состав курсового проекта:
-# 1. Скрипт создания структуры БД - is_sec_seed.sql
-# 2. Логическая структура БД - is_sec_logical.png
-# 3. Физическая структура БД - is_sec_physical.png
+# 1. Скрипт создания структуры БД -                             is_sec_main.sql
+# 2. Логическая структура БД -                                  is_sec_logical.png
+# 3. Физическая структура БД -                                  is_sec_physical.png
+# 4. Скрипт наполнения БД -                                     is_sec_data.sql
+# 5. Скрипт наполнения справочника мер -                        is_sec_data2.sql
+# 6. Скрипт создания хранимых процедур, функций, триггеров -    is_sec_proc.sql
+# 7. Скрипт создания представлений -                            is_sec_view.sql
+# 8. Скрипт основных манипуляций с данными -                    is_sec_select.sql
 
 
 DROP DATABASE IF EXISTS issec;
@@ -169,7 +174,8 @@ create table measures_infosystems
 (
     primary key (id_measures, id_infosystems),
     id_measures    bigint unsigned not null,
-    id_infosystems bigint unsigned not null
+    id_infosystems bigint unsigned not null,
+    threat_model bit default true comment 'дб выполнено по модели угроз'
 )
     comment 'меры которые выполняются в информационной системе';
 

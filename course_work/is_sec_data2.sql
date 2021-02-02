@@ -1,3 +1,5 @@
+# 5. Скрипт наполнения справочника мер
+
 use issec;
 
 insert into issec.measures (id, part, order_service, code, description, div4, div3, div2, div1)

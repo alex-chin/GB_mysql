@@ -1,3 +1,5 @@
+# 4. Скрипт наполнения БД
+
 use issec;
 
 SET FOREIGN_KEY_CHECKS = 0;
